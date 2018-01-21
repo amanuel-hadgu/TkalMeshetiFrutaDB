@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="atawiWetsaeiHarestay" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="49609fd2-d17b-4c11-96b2-4630da0e20ed">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[select olet, sm, atawiwetsaei, description, genzeb from tblatawiwetsaei]]>
+	</queryString>
+	<field name="olet" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sm" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="atawiwetsaei" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="genzeb" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="399" height="39" uuid="9cb034e4-1444-4b7e-8f41-4313b6b59ea6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Nyala" size="25" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[ትካል መሸጢ ፍረታት ምሕረተኣብ ኣብርሃም]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="63" width="31" height="15" forecolor="#736343" uuid="a10b7175-5af4-4005-aeda-1a14582d0ca7"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ስም፡]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="31" y="63" width="198" height="15" uuid="8f56e93e-b429-48bf-9e04-6a0bed4ad782"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sm}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="7b29262f-ee0d-44ff-88e6-3b2ffcccd7b2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="160" height="15" forecolor="#736343" uuid="34eb9b5e-2f72-4583-a71d-7ecf0c16060f"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ዕለት]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="160" y="0" width="160" height="15" forecolor="#736343" uuid="50b53da4-315d-4074-a75d-a95d236ee5f2"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ኣታዊ/ወጻኢ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="321" y="0" width="225" height="15" forecolor="#736343" uuid="fa50478e-ce78-49ba-bea5-fc01fea88017"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ምኽንያት]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="546" y="0" width="160" height="15" forecolor="#736343" uuid="74c2052b-1e42-4a37-ba9f-6a524826b55b"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ገንዘብ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="1" y="0" width="802" height="15" uuid="6fc67581-1f97-4266-a4c1-4d559e1ff9db"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="160" height="15" uuid="33c8846a-e0a6-4cc8-96bd-535dfe1b0885"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{olet}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="545" y="0" width="160" height="15" uuid="fc0a93bf-24bc-4227-bc8b-d01f8047be6a"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{genzeb}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="160" y="0" width="160" height="15" uuid="e696e7e3-b51b-4531-80da-14db7e9ff639"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{atawiwetsaei}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="320" y="0" width="225" height="15" uuid="49eb5bb6-5294-400d-baf3-73f37f5f3d56"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="a74e3c3f-b317-4931-b3f4-abaafc07587b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="b836820c-5c2f-42d7-8250-8957fc2d625e"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="77bdbc4b-16c3-4a05-9830-6c12b1b63fa6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="2bdcf196-2970-49e4-815f-f2feb612735b"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="8b6cee05-5ac4-45b5-a7e6-e686ce748db6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

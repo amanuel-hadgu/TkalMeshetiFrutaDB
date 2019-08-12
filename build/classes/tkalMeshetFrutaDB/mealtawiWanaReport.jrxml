@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mealtawiWanaReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="85b254f1-b983-4eeb-9773-056c55261c1d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="87"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `tblmealtawiharestay` tblmealtawiharestay 
+INNER JOIN `tblwanaharestay` tblwanaharestay ON tblwanaharestay.`IdWana` = tblmealtawiharestay.`IdWana`]]>
+	</queryString>
+	<field name="Olet" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ዝሓደረ" class="java.lang.String"/>
+	<field name="ዕያርጋብያ" class="java.lang.Double"/>
+	<field name="ታሪፍመኪና" class="java.lang.Double"/>
+	<field name="ዓይነትፍሩታ" class="java.lang.String"/>
+	<field name="ፍሩይደቂቕ" class="java.lang.String"/>
+	<field name="ታሪፍካብኪሎ" class="java.lang.Double"/>
+	<field name="ብዝሒጋብያ" class="java.lang.Integer"/>
+	<field name="ሚዛንብኪሎ" class="java.lang.Double"/>
+	<field name="ዋጋንኪሎ" class="java.lang.Double"/>
+	<field name="ጠቕላላዋጋ" class="java.lang.Double"/>
+	<field name="ናይመኪና" class="java.lang.Double"/>
+	<field name="ናይትካል" class="java.lang.Double"/>
+	<field name="nayharestay" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Sm" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="nayharestay_SUM" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{nayharestay}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="296" y="0" width="393" height="42" uuid="cea85882-90cf-49bd-acf8-6894f6621188"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Nyala" size="25" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[ትካል መሸጢ ፍረታት ምሕረተኣብ ኣብርሃም]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="57" width="35" height="15" forecolor="#736343" uuid="e8512597-94c8-43ed-ac3d-6ba9991a9af9"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ዕለት፡]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="35" y="57" width="213" height="15" uuid="daa26e3c-b74f-4a5f-a54d-134efb1dc8f3"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Olet}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="0" y="96" width="35" height="15" forecolor="#736343" uuid="7b459ea2-dfc0-4570-b2ec-8e734103c3d0"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ስም፡]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="35" y="96" width="213" height="15" uuid="a9244634-413d-49fb-bfaa-f6d0e5b4c8f8"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sm}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" pattern="¤ #,##0.00">
+				<reportElement x="388" y="96" width="167" height="20" uuid="9586fcf6-d62c-4a52-b722-3cfba80d2f04"/>
+				<textFieldExpression><![CDATA[new Double( $V{nayharestay_SUM}.doubleValue() )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="318" y="96" width="70" height="20" uuid="e61aee4e-5e88-45ed-9ab0-60e26adf340c"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ድምር ገንዘብ፡]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="017749b7-552b-4ed3-b451-164f4046cc2a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="1" y="0" width="53" height="15" forecolor="#736343" uuid="902f6e02-409c-4673-8577-cb452cdd9e04"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ዝሓደረ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="86" y="0" width="65" height="15" forecolor="#736343" uuid="235ecd4e-49f9-4b5f-9c73-a1205739113b"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ታሪፍመኪና]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="151" y="0" width="53" height="15" forecolor="#736343" uuid="41d4d996-d1a8-48e1-82e8-88693cce91a9"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ፍሩታ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="205" y="0" width="43" height="15" forecolor="#736343" uuid="92bf61fb-62b8-41c8-a326-887aab1c0ab8"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ዓይነት]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="248" y="0" width="75" height="15" forecolor="#736343" uuid="5ef85315-b631-4ee0-9a27-beaa230480d3"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ታሪፍካብኪሎ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="324" y="0" width="64" height="15" forecolor="#736343" uuid="87e381f0-ac3a-4b7d-8a1d-70ba046a1e36"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ብዝሒጋብያ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="388" y="0" width="66" height="15" forecolor="#736343" uuid="569c566a-cee4-4ac2-8189-3f87dac23c2d"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ሚዛንብኪሎ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="454" y="0" width="53" height="15" forecolor="#736343" uuid="42890bb4-ca0f-40e9-82d7-e4507bbcf688"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ዋጋንኪሎ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="507" y="0" width="64" height="15" forecolor="#736343" uuid="cdf3b277-051a-4ca9-94a9-ad8bc8300027"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ጠቕላላዋጋ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="571" y="0" width="65" height="15" forecolor="#736343" uuid="b103afd3-3bcc-4f01-a6a9-0e8615268fad"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ናይመኪና]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="636" y="0" width="53" height="15" forecolor="#736343" uuid="257eb93c-4768-44ae-9061-f6183e72d7c2"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ናይትካል]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="689" y="0" width="93" height="15" forecolor="#736343" uuid="3daf17bb-2e13-4809-beec-195a33b37b35"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ናይ ሓረስታይ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="54" y="1" width="32" height="15" forecolor="#736343" uuid="3a4091e1-8f8f-4df4-9225-73b2ebbde953"/>
+				<textElement>
+					<font fontName="Nyala" size="14"/>
+				</textElement>
+				<text><![CDATA[ዕያር]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="45e4152b-4d53-4c52-bfa9-cce8e10a62da"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="1" y="0" width="53" height="15" uuid="3b92d469-f443-4a97-9c0a-65599faa3854"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ዝሓደረ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="86" y="0" width="65" height="15" uuid="abdf76b9-2514-418d-b141-b6f5c74f2888"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ታሪፍመኪና}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="151" y="0" width="53" height="15" uuid="128924aa-2627-41a7-957b-356bd6069c8c"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ዓይነትፍሩታ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="205" y="0" width="43" height="15" uuid="dcd85960-736d-40d0-8d48-4604c712a19c"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ፍሩይደቂቕ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="248" y="0" width="75" height="15" uuid="c5873d5c-a07d-404c-810f-c59ff950cd34"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ታሪፍካብኪሎ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="324" y="0" width="64" height="15" uuid="4a91f22f-e17c-4780-8bb3-dc24aaf15e37"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ብዝሒጋብያ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="388" y="0" width="66" height="15" uuid="452f7dfb-2e14-4314-9134-b5816ab2a1de"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ሚዛንብኪሎ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="454" y="0" width="53" height="15" uuid="420fe893-7ed6-4ddc-ae88-543bb0776db8"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ዋጋንኪሎ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="507" y="0" width="64" height="15" uuid="a215f464-adb2-4846-9ca2-91589acd71d6"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ጠቕላላዋጋ}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="571" y="0" width="65" height="15" uuid="bce82d0a-b8d3-488f-b80d-eeedce72f017"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ናይመኪና}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="636" y="0" width="53" height="15" uuid="83900762-2800-4db2-9a0e-f4077d9984d4"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ናይትካል}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="689" y="0" width="93" height="15" uuid="2e353562-bbca-4100-851a-38e206ab963d"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nayharestay}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="54" y="0" width="32" height="15" uuid="8dd05326-e852-4272-8d4e-c75fa27b2eea"/>
+					<textElement>
+						<font fontName="Nyala" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ዕያርጋብያ}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="7bf408e4-5dfe-41d2-99aa-567e8f631f43"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="00837628-c4e0-4e95-8d09-1dab5cd81681"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="b1f2f08b-2671-466f-82d6-7aff30ef192c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="62c88cb0-9741-4295-bfcf-e79d27e38733"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="5a2c43f6-6c12-48df-bd12-dec4490dee4d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
